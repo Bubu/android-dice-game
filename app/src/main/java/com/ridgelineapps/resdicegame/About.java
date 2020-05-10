@@ -47,6 +47,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class About extends Activity {
     @Override
@@ -64,17 +65,16 @@ public class About extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
         
-        ((Button)findViewById(R.id.about_ok)).setOnClickListener(new OnClickListener() {
+        findViewById(R.id.about_ok).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
         
-        String html = readFile(this, R.raw.about).toString();
-        WebView w = (WebView) findViewById(R.id.webView);
-        w.setBackgroundColor(0);
-        w.loadData(html, "text/html", "UTF-8");
+        String about_txt = readFile(this, R.raw.about).toString();
+        TextView textView = (TextView) findViewById(R.id.about_text);
+        textView.setText(about_txt);
     }
 
     static CharSequence readFile(Activity activity, int id) {

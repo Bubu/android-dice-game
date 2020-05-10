@@ -60,7 +60,7 @@ public class Rules extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rules);
         
-        ((Button)findViewById(R.id.about_ok)).setOnClickListener(new OnClickListener() {
+        findViewById(R.id.about_ok).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
