@@ -65,7 +65,6 @@ public class GameView extends View {
 
    Bitmap playSheetImage;
    Paint imagePaint;
-   Paint borderPaint;
    Paint scorePaint;
    Paint backPaint;
    UIDiceRoll uiDiceRoll;
@@ -102,11 +101,6 @@ public class GameView extends View {
       backPaint = new Paint();
       backPaint.setStyle(Style.FILL);
       backPaint.setARGB(255, 25, 25, 25);
-
-      borderPaint = new Paint();
-      borderPaint.setStyle(Style.STROKE);
-      borderPaint.setStrokeWidth(3);
-      borderPaint.setARGB(255, 80, 80, 80);
 
       UIDice.loadBitmaps(context.getResources());
       int diceX = diceLocX;
@@ -302,8 +296,6 @@ public class GameView extends View {
       String score = "" + game.playsheet.getScore();
       int xOffset = (int) (scorePaint.measureText(score) / 2);
       canvas.drawText(score, scoreLoc.x - xOffset, scoreLoc.y, scorePaint);
-      canvas.drawRect(0, 0, width - 1, height - 1, borderPaint);
-
       canvas.restoreToCount(restoreCount);
    }
 
