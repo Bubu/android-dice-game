@@ -28,6 +28,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -60,7 +61,7 @@ public class GameView extends View {
    Point scoreLoc = new Point(444, 184);
 
    Game game;
-   ArrayList<UIEntity> entities = new ArrayList<UIEntity>();
+   ArrayList<UIEntity> entities = new ArrayList<>();
 
    Bitmap playSheetImage;
    Paint imagePaint;
@@ -237,6 +238,18 @@ public class GameView extends View {
          UIEntity entity = new UIEntity(game, UIEntity.Type.knight, i + 1, poly, path);
          entities.add(entity);
       }
+   }
+
+   public GameView(Context context) {
+      super(context);
+   }
+
+   public GameView(Context context, AttributeSet attrs) {
+      super(context, attrs);
+   }
+
+   public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+      super(context, attrs, defStyleAttr);
    }
 
    @Override
