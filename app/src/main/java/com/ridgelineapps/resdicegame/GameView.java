@@ -105,7 +105,7 @@ public class GameView extends View {
       borderPaint = new Paint();
       borderPaint.setStyle(Style.STROKE);
       borderPaint.setStrokeWidth(3);
-      borderPaint.setARGB(255, 200, 200, 100);
+      borderPaint.setARGB(255, 80, 80, 80);
 
       UIDice.loadBitmaps(context.getResources());
       int diceX = diceLocX;
@@ -251,14 +251,8 @@ public class GameView extends View {
 
       canvas.drawRect(0, 0, width, height, backPaint);
 
-//      float scale = (float) playSheetImage.getScaledWidth(canvas) / 480;
-//      Rect src = new Rect(0, 0, playSheetImage.getWidth(), playSheetImage.getHeight()); //(int) (width * scale), (int) (height * scale));
-//      Rect dest = new Rect(0, 0, (int) (src.width()* scale), (int) (src.height() * scale)); //canvas.getWidth(), canvas.getHeight());
-//      canvas.drawBitmap(playSheetImage, src, dest, imagePaint);
-
       canvas.drawBitmap(playSheetImage, playsheetSrcRect, playsheetDestRect, imagePaint);
 
-//      canvas.drawBitmap(playSheetImage, 0, 0, imagePaint);
 
       for(UIEntity e : entities) {
          e.draw(canvas);
@@ -297,12 +291,6 @@ public class GameView extends View {
       canvas.drawText(score, scoreLoc.x - xOffset, scoreLoc.y, scorePaint);
       canvas.drawRect(0, 0, width - 1, height - 1, borderPaint);
 
-//      if(!game.isGameDone()) {
-//          String turn = "Turn:  " + (game.turnsTaken + 1);
-//          xOffset = (int) (scorePaint.measureText(turn) / 2);
-//          canvas.drawText(turn, 334, 38, scorePaint);
-//      }
-
       canvas.restoreToCount(restoreCount);
    }
 
@@ -314,11 +302,9 @@ public class GameView extends View {
       float density = 0;
       try
       {
-         Display display = activity.getWindowManager().getDefaultDisplay();
-         DisplayMetrics dm = new DisplayMetrics();
-         display.getMetrics(dm);
+         DisplayMetrics dm = this.getResources().getDisplayMetrics();
          density = dm.density;
-         screenInches = Math.sqrt(Math.pow(display.getWidth() / dm.xdpi, 2) + Math.pow(display.getHeight() / dm.ydpi, 2));
+         screenInches = Math.sqrt(Math.pow(dm.widthPixels / dm.xdpi, 2) + Math.pow(dm.heightPixels / dm.ydpi, 2));
          mayUpscale = xScale > 1 && yScale > 1 && screenInches >= 6;
       }
       catch(Throwable t) {
@@ -397,8 +383,4 @@ public class GameView extends View {
 
       return true;
    }
-//   @Override
-//   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//      setMeasuredDimension(width, height);
-//   }   
 }

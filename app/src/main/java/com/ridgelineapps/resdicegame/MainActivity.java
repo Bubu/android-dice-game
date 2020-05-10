@@ -40,13 +40,10 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT < 11) {
-            this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        alwaysScale = prefs.getBoolean("always_scale", false);
+        alwaysScale = prefs.getBoolean("always_scale", true);
         game = new Game();
         GameView gameView = new GameView(this, game);
         game.setGameView(gameView);
@@ -89,7 +86,7 @@ public class MainActivity extends Activity {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("always_scale", alwaysScale);
-                editor.commit();
+                editor.apply();
                 if(game != null && game.gameView != null) {
                     game.gameView.scaleInit = false;
                     game.gameView.postInvalidate();
@@ -101,8 +98,6 @@ public class MainActivity extends Activity {
 
     public void showScalingOption() {
         showScalingOption = true;
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            invalidateOptionsMenu();
-        }
+        invalidateOptionsMenu();
     }
 }

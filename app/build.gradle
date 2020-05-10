@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 11
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 23
 
     defaultConfig {
         applicationId "com.ridgelineapps.resdicegame"
-        minSdkVersion 7
+        minSdkVersion 14
         targetSdkVersion 23
     }
 
