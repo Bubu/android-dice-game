@@ -21,4 +21,35 @@
     <string name="high_scores_toast">Neuer Highscore</string>
     <string name="high_scores_top_5_toast">Neuer Top 5 Highscore</string>
     <string name="toggle_scaling">Skalierungsmodus</string>
+    <string name="rulestext1">SPIELZIEL\n\nDas Spielfeld stellt die Insel Catan dar, mit speziellen Symbolen für Sieldungen, Städte, Straßen und Rittern. Während des SPiels versuchst Du so viele Straßen, Siedlungen, Stäste und Ritter wie möglich zu bauen.</string>
+    <string name="rulestext2">SPIELABLAUF\n\n
+        Jeden Zug würfelst Du bis zu dreimal. Nach jedem mal Würfeln kannst Du Würfel antippen, um sie nicht noch einmal mitzuwürfeln. Nach dreimal Würfeln (oder eher, wenn dir die Rohstoffe vorher schon zum Bauen ausreichen), kannst Du auf eine grün hervorgehobene Straße, Siedlung, Stadt oder einen Ritter tippen um sie zu bauen. Das Bauen verbraucht automatisch die benötigten Rohstoffe. Wenn Du ausreichend Rohstoffe hast, kannsy Du auch mehrere Sachen pro Zug bauen.\n\n
+
+        REGELN FÜRS BAUEN\n\n
+
+        Straße: Eine Straße kostet 1 x Lehm und 1 x Holz und bringt immer 1 Punkt. Die erste Straße (Startstraße) ist schon gebaut und kostet keine Ressourcen. Strqßen werden der Reihenfolge nach gebaut. Das heißt, eine neue Straße muss an eine schon gebaute Straße angebaut werden. Eine Sieldung oder Stadt an einer Straße verhindert nicht, dass eine weitere Straße angebaut werden kann. Das gilt auch für noch nicht gebaute Sieldungen oder Städte.\n\n
+
+        Sieldung: Eine Sieldung kostet 1 x Holz, 1 x Lehm, 1 x Getreide und 1 x Wolle. Eine Sieldung kann nur gebaut werden, wenn die Straße, die zu dieser Siedlung führt schon gebaut ist. Weiterhin müssen die Sieldungen in der Punktezahl aufsteigend gebaut werden: Erst muss die 3 Punkte Sieldunge gebaut werden, dann die 4 Punkte Sieldung, usw.\n\n
+
+        Stadt: Eine Stadt kostet 3 x Erz und 2 x Getreide. Die Bauregeln sind die gleichen wie für Siedlungen, d.h. eine Straße muss zur Stadt führen und die Stqdte müssen der Reihenfolge nach gebaut werden.\n\n
+
+        Ritter: Ein Ritter kostet 1 x Getreide, 1 x Wolle und 1 x Erz. Auch die Ritter müssen der Punktereihenfolge nach gebaut werden. Jeder Ritter hat einen Rohstoff unter sich - Du kannst jeden dieser Rohstoffe einmal pro Spiel einsetzen.\n\n
+
+        RITTER UND DEREN ROHSTOFFE\n\n
+
+        Für jeden Ritter, den Du baust kannst Du (einmal im Spiel) den von diesem Ritter bewachten Rohstoff einsetzen. Dieser Rohstoff wird automatisch benutzt, wenn er gebraucht wird. Der letzte Ritter bewacht ein Fragezeichen, was für einen beliegiben Rohstoff 1:1 eingetausht werden kann.\n
+        (*Achtung, dies funktioniert in dieser Android Version anders als beim analogen Würfelspiel, wo diese Rohstoffjoker dazu benutzt werden können um Würfelergebnisse zu ändern und nicht als separate Rohstoffe zählen.)\n\n
+
+        GOLD EINTAUSCHEN\n\n
+
+        Wenn du 2 x Gold als Würfelergebnis hast, können diese beim Bauen gegen einen beliebigen Rohstoff eingetauscht werden.\n\n
+
+        SPIELENDE\n\n
+
+        Das Spiel endet nach 15 Zügen. Die Gesamtpunktzahl ist Summe aller Zügen, die in jedem Zug gesammelt wurden. Für jeden Zug, in dem Du keine Punkte bekommen hast, werden 2 Punkte von der Gesamtpunktzahl abgezogen (wird durch ein \'X\' angezeigt).
+    </string>
+    <string name="abouttext">Catan Würfelspiel für Android\n\n
+Dies ist eine inoffizielle Implementierung des Catan Würfelspiels.\n
+Mehr informationen zum Würfelspielfindest Du hier: http://boardgamegeek.com/boardgame/27710/catan-dice-game\n
+Dieses Programm ist Freie Sofware, der Quelltext ist verfügbar unter https://github.com/Bubu/android-dice-game</string>
 </resources>

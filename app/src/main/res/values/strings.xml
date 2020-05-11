@@ -38,7 +38,7 @@ Knight: A knight costs 1 grain, 1 wool, and 1 ore. The knights must also be buil
 
 KNIGHT GUARDED RESOURCES\n\n
 
-For each knight you build, you may use (once during the game) the resource below this knight. This resource is used automatically when needed.\n
+For each knight you build, you may use (once during the game) the resource below this knight. This resource is used automatically when needed. The last knight guards a question mark resource, this can be exchanged for any other resource 1:1.\n
 (*Note that this is handled differently in the Android version of the game than in the regular game, where these "Resource Jokers" are used to change dice rolls, not used as separate resources.)\n\n
 
 GOLD TRADE\n\n
