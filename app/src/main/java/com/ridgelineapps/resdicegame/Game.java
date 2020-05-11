@@ -17,8 +17,7 @@
 package com.ridgelineapps.resdicegame;
 
 import java.util.ArrayList;
-
-import android.widget.Toast;
+import java.util.Collections;
 
 //TODO: 
 //  Confirm "Use knight resource(s)"
@@ -29,21 +28,21 @@ public class Game {
    Playsheet playsheet;
    Dice[] dice;
    int rolls;
-   ArrayList<Dice.Value> knightResources;
-   boolean builtResourceThisTurn;
+   private ArrayList<Dice.Value> knightResources;
+   private boolean builtResourceThisTurn;
    int turnsTaken;
-   boolean scored = false;
+   private boolean scored = false;
    
-   public static Dice.Value[] RESOURCES_ROAD = new Dice.Value[]{ Dice.Value.Brick, Dice.Value.Lumber };
-   public static Dice.Value[] RESOURCES_VILLAGE = new Dice.Value[]{ Dice.Value.Lumber, Dice.Value.Brick, Dice.Value.Wool, Dice.Value.Grain };
-   public static Dice.Value[] RESOURCES_KNIGHT = new Dice.Value[]{ Dice.Value.Wool, Dice.Value.Grain, Dice.Value.Ore };
-   public static Dice.Value[] RESOURCES_CITY = new Dice.Value[]{ Dice.Value.Grain, Dice.Value.Grain, Dice.Value.Ore, Dice.Value.Ore, Dice.Value.Ore };
+   private static Dice.Value[] RESOURCES_ROAD = new Dice.Value[]{ Dice.Value.Brick, Dice.Value.Lumber };
+   private static Dice.Value[] RESOURCES_VILLAGE = new Dice.Value[]{ Dice.Value.Lumber, Dice.Value.Brick, Dice.Value.Wool, Dice.Value.Grain };
+   private static Dice.Value[] RESOURCES_KNIGHT = new Dice.Value[]{ Dice.Value.Wool, Dice.Value.Grain, Dice.Value.Ore };
+   private static Dice.Value[] RESOURCES_CITY = new Dice.Value[]{ Dice.Value.Grain, Dice.Value.Grain, Dice.Value.Ore, Dice.Value.Ore, Dice.Value.Ore };
    
    GameView gameView;
    
    public Game() {
       playsheet = new Playsheet();
-      knightResources = new ArrayList<Dice.Value>();
+      knightResources = new ArrayList<>();
       dice = new Dice[6];
       for(int i=0; i < dice.length; i++) {
          dice[i] = new Dice();
@@ -53,15 +52,15 @@ public class Game {
       newTurn(true);
    }
    
-   public String getString(int id) {
+   String getString(int id) {
       return gameView.activity.getResources().getString(id);
    }
    
-   public void setGameView(GameView gameView) {
+   void setGameView(GameView gameView) {
       this.gameView = gameView;
    }
    
-   public void reset() {
+   void reset() {
       turnsTaken = 0;
       playsheet.reset();
       scored = false;
@@ -70,7 +69,7 @@ public class Game {
          gameView.postInvalidate();      
    }
    
-   public void newTurn(boolean firstTurn) {
+   private void newTurn(boolean firstTurn) {
        if(isGameDone()) {
            return;
        }
@@ -86,8 +85,8 @@ public class Game {
       }
       
       knightResources.clear();
-      for(int i=0; i < dice.length; i++) {
-         dice[i].reset();
+      for (Dice die : dice) {
+         die.reset();
       }
       if(!firstTurn && !builtResourceThisTurn) {
          playsheet.turnsNothingBuilt++;
@@ -110,20 +109,11 @@ public class Game {
          gameView.postInvalidate();      
    }
    
-   public boolean canUseKnightResource(int i) {
+   private boolean canUseKnightResource(int i) {
       return playsheet.canUseKnightResource(i);
    }
-   
-   public void consumeKnightResource(int i) {
-      Dice.Value val = playsheet.getKnightResource(i);
-      if(val != Dice.Value.None) {
-         knightResources.add(val);
-      }
-      if(gameView != null)
-          gameView.postInvalidate();      
-   }
-   
-   public void diceTouched(int i) {
+
+   void diceTouched(int i) {
       if(rolls == 0 || i < 0 || i >= dice.length) {
          return;
       }
@@ -133,7 +123,7 @@ public class Game {
           gameView.postInvalidate();      
    }
    
-   public void roll() {
+   void roll() {
        if(isGameDone()) {
            reset();
            return;
@@ -181,11 +171,11 @@ public class Game {
          gameView.postInvalidate();
    }
    
-   public boolean canRoll() {
+   boolean canRoll() {
       return (rolls < 3 && !builtResourceThisTurn && !isGameDone());
    }
    
-   public void buildVillage(int i) {
+   void buildVillage(int i) {
       if(!canBuildVillage(i)) {
          return;
       }
@@ -197,7 +187,7 @@ public class Game {
          gameView.postInvalidate();            
    }
    
-   public boolean canBuildVillage(int i) {
+   boolean canBuildVillage(int i) {
       if(!canBuildVillage()) {
          return false;
       }
@@ -205,7 +195,7 @@ public class Game {
       return playsheet.canBuildVillage(i);
    }
    
-   public boolean canBuildVillage() {
+   private boolean canBuildVillage() {
       if(rolls == 0) {
          return false;
       }
@@ -213,7 +203,7 @@ public class Game {
       return canBuild(RESOURCES_VILLAGE);
    }
    
-   public void buildKnight(int i) {
+   void buildKnight(int i) {
       if(!canBuildKnight(i)) {
          return;
       }
@@ -225,7 +215,7 @@ public class Game {
          gameView.postInvalidate();            
    }
    
-   public boolean canBuildKnight(int i) {
+   boolean canBuildKnight(int i) {
       if(!canBuildKnight()) {
          return false;
       }
@@ -233,7 +223,7 @@ public class Game {
       return playsheet.canBuildKnight(i);
    }
    
-   public boolean canBuildKnight() {
+   private boolean canBuildKnight() {
       if(rolls == 0) {
          return false;
       }
@@ -241,7 +231,7 @@ public class Game {
       return canBuild(RESOURCES_KNIGHT);
    }
    
-   public void buildRoad(int i) {
+   void buildRoad(int i) {
       if(!canBuildRoad(i)) {
          return;
       }
@@ -253,7 +243,7 @@ public class Game {
          gameView.postInvalidate();            
    }
    
-   public boolean canBuildRoad(int i) {
+   boolean canBuildRoad(int i) {
       if(!canBuildRoad()) {
          return false;
       }
@@ -261,7 +251,7 @@ public class Game {
       return playsheet.canBuildRoad(i);
    }   
    
-   public boolean canBuildRoad() {
+   private boolean canBuildRoad() {
       if(rolls == 0) {
          return false;
       }
@@ -269,7 +259,7 @@ public class Game {
       return canBuild(RESOURCES_ROAD);
    }
    
-   public void buildCity(int i) {
+   void buildCity(int i) {
       if(!canBuildCity(i)) {
          return;
       }
@@ -281,7 +271,7 @@ public class Game {
          gameView.postInvalidate();            
    }
    
-   public boolean canBuildCity(int i) {
+   boolean canBuildCity(int i) {
       if(!canBuildCity()) {
          return false;
       }
@@ -289,7 +279,7 @@ public class Game {
       return playsheet.canBuildCity(i);
    }   
    
-   public boolean canBuildCity() {
+   private boolean canBuildCity() {
       if(rolls == 0) {
          return false;
       }
@@ -297,7 +287,7 @@ public class Game {
       return canBuild(RESOURCES_CITY);
    }
    
-   public void useResources(Dice.Value[] resources) {
+   private void useResources(Dice.Value[] resources) {
       // TODO: Cleanup how knightResources are tracked
       knightResources.clear();
       for(int i=1; i <= 6; i++) {
@@ -317,23 +307,21 @@ public class Game {
          gold--;
       }
       
-      ArrayList<Dice.Value> resList = new ArrayList<Dice.Value>();
-      for(Dice.Value val : resources) {
-          resList.add(val);
-      }
+      ArrayList<Dice.Value> resList = new ArrayList<>();
+      Collections.addAll(resList, resources);
       
       for(Dice.Value val : resources) {
-         for(int i=0; i < dice.length; i++) {
-            if(dice[i].isUsable() && dice[i].value.equals(val)) {
-               dice[i].use();
+         for (Dice die : dice) {
+            if (die.isUsable() && die.value.equals(val)) {
+               die.use();
                resList.remove(val);
                break;
             }
          }
       }
       
-      ArrayList<Dice.Value> resListFound = new ArrayList<Dice.Value>();
-       
+      ArrayList<Dice.Value> resListFound = new ArrayList<>();
+
       for(Dice.Value val : resList) {
           for(int i = knightResources.size() - 1; i >=0 ; i--) {
              if(knightResources.get(i).equals(val)) {
@@ -395,7 +383,7 @@ public class Game {
       }
    }
 
-   public boolean canBuild(Dice.Value[] resourcesRequired) {
+   private boolean canBuild(Dice.Value[] resourcesRequired) {
       boolean[] diceUsed = new boolean[dice.length];
       
       // TODO: Cleanup how knightResources are tracked
@@ -446,18 +434,18 @@ public class Game {
             unfound++;
          }
       }
-      
+
       if(unfound > gold / 2) {
           return false;
       }
       return true;
    }
    
-   public boolean isGameDone() {
+   boolean isGameDone() {
        return (turnsTaken == 15);
    }
    
-   public int getKnightResourceIndex(Dice.Value val) {
+   private int getKnightResourceIndex(Dice.Value val) {
        int index = 0;
        switch(val) {
            case Ore:
