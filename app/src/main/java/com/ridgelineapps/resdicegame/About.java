@@ -72,31 +72,9 @@ public class About extends Activity {
             }
         });
         
-        String about_txt = readFile(this, R.raw.about).toString();
-        TextView textView = (TextView) findViewById(R.id.about_text);
+        String about_txt = getString(R.string.abouttext);
+        TextView textView = findViewById(R.id.about_text);
         textView.setText(about_txt);
-    }
-
-    static CharSequence readFile(Activity activity, int id) {
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new InputStreamReader(
-                    activity.getResources().openRawResource(id)));
-            String line;
-            StringBuilder buffer = new StringBuilder();
-            while ((line = in.readLine()) != null) buffer.append(line).append('\n');
-            return buffer;
-        } catch (IOException e) {
-            return "";
-        } finally {
-           if (in != null) {
-              try {
-                  in.close();
-              } catch (IOException e) {
-                  // Ignore
-              }
-          }
-        }
     }
 }
 

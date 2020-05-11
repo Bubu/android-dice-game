@@ -1,3 +1,0 @@
-GOAL
-
-The game map depicts the Island of Catan, with special symbols for settlements, cities, roads, and knights. During the course of the game, you try to build as many roads, settlements, cities, and knights as possible on the island depicted on your game map.

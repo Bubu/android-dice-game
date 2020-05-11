@@ -67,12 +67,12 @@ public class Rules extends Activity {
             }
         });
         
-        String text = About.readFile(this, R.raw.rulesp1).toString();
-        TextView textView = (TextView) findViewById(R.id.rulesp1_text);
+        String text = getString(R.string.rulestext1);
+        TextView textView = findViewById(R.id.rulesp1_text);
         textView.setText(text);
         
-        text = About.readFile(this, R.raw.rulesp2).toString();
-        textView = (TextView) findViewById(R.id.rulesp2_text);
+        text = getString(R.string.rulestext2);
+        textView = findViewById(R.id.rulesp2_text);
         textView.setText(text);
     }
 }

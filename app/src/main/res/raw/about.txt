@@ -1,5 +1,0 @@
-Catan Dice Game for Android
-
-This is an unofficial implementation of the Catan Dice Game.
-More information on the dice game can be found at http://boardgamegeek.com/boardgame/27710/catan-dice-game
-This program is open source, hosted at https://github.com/Bubu/android-dice-game

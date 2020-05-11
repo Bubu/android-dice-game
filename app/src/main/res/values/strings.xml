@@ -21,4 +21,36 @@
     <string name="high_scores_toast">New High Score</string>
     <string name="high_scores_top_5_toast">New Top 5 Score</string>
     <string name="toggle_scaling">Toggle Scaling</string>
+    <string name="rulestext1">GOAL\n\nThe game map depicts the Island of Catan, with special symbols for settlements, cities, roads, and knights. During the course of the game, you try to build as many roads, settlements, cities, and knights as possible on the island depicted on your game map.</string>
+    <string name="rulestext2">GAME PLAY\n\n
+
+During each turn, you roll the dice up to three times. After every roll, you may tap on any dice to keep them from being rolled. After three rolls (or sooner if you are ready to build with the resources you have), tap a highlighted road, settlement, city or knight to build it. Building will automatically use up the resources required. You may build multiple times during your turn, if you have rolled enough of the appropriate resources.\n\n
+
+BUILDING RULES\n\n
+
+Road: A road costs 1 brick and 1 lumber and is always worth 1 point. The first road (starting road) is already built and doesn\'t cost any resources. Roads are built in a sequence, meaning that a new road must be built next to a road that has already been built. A city or settlement next to a road does not obstruct subsequent road building - this also applies if the settlement or city hasn\'t yet been built.\n\n
+
+Settlement: A settlement costs 1 lumber, 1 brick, 1 grain, and 1 wool. A settlement can only be built if an already built road is next to it. Furthermore, settlements must be built following the sequence of their points: first the settlement with 3 points must be built, then the settlement with 4 points, and so on.\n\n
+
+City: A city costs 3 ore and 2 grain. The procedure is the same as for building a settlement. A city can only be built if it is next to an already built road. Cities must also be built following the sequence of their points.\n\n
+
+Knight: A knight costs 1 grain, 1 wool, and 1 ore. The knights must also be built following the sequence of their points. Each knight that you build has a resource below it - you may use each such resource once per game.\n\n
+
+KNIGHT GUARDED RESOURCES\n\n
+
+For each knight you build, you may use (once during the game) the resource below this knight. This resource is used automatically when needed.\n
+(*Note that this is handled differently in the Android version of the game than in the regular game, where these "Resource Jokers" are used to change dice rolls, not used as separate resources.)\n\n
+
+GOLD TRADE\n\n
+
+If you have 2 gold results after you finish rolling the dice, those 2 gold can be traded for another resource when building. Thus 2 gold will be treated as 1 ore, 1 brick, or 1 of any other resource.\n\n
+
+END OF THE GAME\n\n
+
+The game ends after 15 turns. The total score is the sum of all turns, with 2 points subtracted for each turn where no points were scored (shown by an \'X\').</string>
+    <string name="abouttext">Catan Dice Game for Android\n\n
+This is an unofficial implementation of the Catan Dice Game.\n
+More information on the dice game can be found at http://boardgamegeek.com/boardgame/27710/catan-dice-game\n
+This program is open source, hosted at https://github.com/Bubu/android-dice-game
+    </string>
 </resources>
