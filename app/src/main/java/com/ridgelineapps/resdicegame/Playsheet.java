@@ -16,7 +16,7 @@
  */
 package com.ridgelineapps.resdicegame;
 
-public class Playsheet {
+class Playsheet {
    int knights;
    boolean[] resourcesAvail; // 1 based
    boolean[] roads;
@@ -25,11 +25,11 @@ public class Playsheet {
    int turnsNothingBuilt = 0;
    int[] turnScore;
    
-   public Playsheet() {
+   Playsheet() {
       reset();
    }
    
-   public boolean canBuildVillage(int i) {
+   boolean canBuildVillage(int i) {
       if(i < 0 || i > 5) {
          return false;
       }
@@ -63,13 +63,13 @@ public class Playsheet {
       return false;
    }
    
-   public void buildVillage(int i) {
+   void buildVillage(int i) {
       if(canBuildVillage(i)) {
          villages[i] = true;
       }      
    }
    
-   public boolean canBuildCity(int i) {
+   boolean canBuildCity(int i) {
       if(i < 0 || i > 3) {
          return false;
       }
@@ -94,13 +94,13 @@ public class Playsheet {
       return false;
    }
    
-   public void buildCity(int i) {
+   void buildCity(int i) {
       if(canBuildCity(i)) {
          cities[i] = true;
       }      
    }
    
-   public boolean canBuildRoad(int i) {
+   boolean canBuildRoad(int i) {
       if(i < 0 || i > 16) {
          return false;
       }
@@ -148,71 +148,58 @@ public class Playsheet {
       
       if(i == 15)
          return roads[14];
-      
+
       if(i == 16)
          return roads[15];
-      
+
       return false;
    }
    
-   public void buildRoad(int i) {
+   void buildRoad(int i) {
       if(canBuildRoad(i)) {
          roads[i] = true;
       }
    }
    
-   public boolean canBuildKnight(int i) {
+   boolean canBuildKnight(int i) {
       if(i < 1 || i > 6) {
          return false;
       }
-      
-      if(knights == i - 1) {
-         return true;
-      }
-      
-      return false;
+
+      return knights == i - 1;
    }
    
-   public void buildKnight(int i) {
+   void buildKnight(int i) {
       if(canBuildKnight(i)) {
          knights = i;
       }
    }
    
-   public boolean canUseKnightResource(int i) {
+   boolean canUseKnightResource(int i) {
       if(i < 1 || i > 6) {
          return false;
       }
-      
-      if(knights >= i && resourcesAvail[i]) {
-         return true;
-      }
-      
-      return false;
+
+      return knights >= i && resourcesAvail[i];
    }
    
-   public boolean isKnightResourceUsed(int i) {
+   boolean isKnightResourceUsed(int i) {
        if(i < 1 || i > 6) {
           return false;
        }
-       
-       if(knights >= i && !resourcesAvail[i]) {
-          return true;
-       }
-       
-       return false;
-    }
-   
-   public Dice.Value useKnightResource(int i) {
-      if(canUseKnightResource(i)) {
-         resourcesAvail[i] = false;
-         return getKnightResource(i);
-      }
-      
-      return Dice.Value.None;
+
+      return knights >= i && !resourcesAvail[i];
    }
    
-   public Dice.Value getKnightResource(int i) {
+   void useKnightResource(int i) {
+      if(canUseKnightResource(i)) {
+         resourcesAvail[i] = false;
+         getKnightResource(i);
+      }
+
+   }
+   
+   Dice.Value getKnightResource(int i) {
        if(canUseKnightResource(i)) {
           switch(i) {
              case 1:
@@ -233,7 +220,7 @@ public class Playsheet {
        return Dice.Value.None;
     }
    
-   public void reset() {
+   void reset() {
       knights = 0;
       resourcesAvail = new boolean[7];
       for(int i=1; i <= 6; i++) {
@@ -247,21 +234,21 @@ public class Playsheet {
       turnScore = new int[16];
    }
    
-   public void scoreTurn(int turn) {
+   void scoreTurn(int turn) {
       if(turn < 1 || turn > 15) {
          return;
       }
       turnScore[turn] = getScore();
    }
    
-   public int getTurnScore(int turn) {
+   int getTurnScore(int turn) {
       if(turn < 1 || turn > 15) {
          return 0;
       }
       return turnScore[turn] - turnScore[turn - 1];
    }
    
-   public int getScore() {
+   int getScore() {
       int score = 0;
       for(int i=1; i < roads.length; i++) {
          if(roads[i]) {
