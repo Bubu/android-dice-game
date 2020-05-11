@@ -118,7 +118,7 @@ public class Game {
          return;
       }
       
-      dice[i].hold(rolls, !dice[i].isHeld());
+      dice[i].hold(!dice[i].isHeld());
       if(gameView != null)
           gameView.postInvalidate();      
    }

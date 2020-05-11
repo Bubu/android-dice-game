@@ -29,14 +29,14 @@ public class Dice {
    }
    
    Value value;
-   boolean held;
-   boolean used;
+   private boolean held;
+   private boolean used;
    
    public Dice() {
       reset();
    }
    
-   public void roll() {
+   void roll() {
       int i = (int) (Math.random() * 6 + 1);
       switch(i) {
          case 1:
@@ -60,37 +60,37 @@ public class Dice {
       }
    }
    
-   public void swap(Dice die) {
+   void swap(Dice die) {
       Dice.Value temp = die.getValue();
       die.setValue(value);
       value = temp;      
    }
    
-   public boolean isHeld() {
+   boolean isHeld() {
       return held;
    }
    
-   public void hold(int roll, boolean b) {
+   void hold(boolean b) {
       held = b;
    }
    
-   public boolean isUsable() {
+   boolean isUsable() {
       return !used;
    }
    
-   public void use() {
+   void use() {
       used = true;
    }
    
-   public Value getValue() {
+   Value getValue() {
       return value;
    }
    
-   public void setValue(Value value) {
+   private void setValue(Value value) {
       this.value = value;
    }
    
-   public void reset() {
+   void reset() {
       held = false;
       used = false;
       value = Value.None;
