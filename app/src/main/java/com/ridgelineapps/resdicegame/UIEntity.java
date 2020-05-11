@@ -16,8 +16,6 @@
  */
 package com.ridgelineapps.resdicegame;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -33,23 +31,22 @@ public class UIEntity {
       knight,
       resource,
       roll,
-//      turnOver,
    }
    
-   int x1;
-   int y1;
-   int x2;
-   int y2;
+   private int x1;
+   private int y1;
+   private int x2;
+   private int y2;
    
    Game game;
    
-   PolygonLite poly;
+   private PolygonLite poly;
    Path path;
    
-   Type type;
-   int index;
+   private Type type;
+   private int index;
    
-   public UIEntity(Game game, Type type, int index, int x1, int y1, int x2, int y2) {
+   UIEntity(Game game, Type type, int index, int x1, int y1, int x2, int y2) {
       this.type = type;
       this.game = game;
       this.index = index;
@@ -59,7 +56,7 @@ public class UIEntity {
       this.y2 = Math.max(y1, y2);
    }
    
-   public UIEntity(Game game, Type type, int index, PolygonLite poly, Path path) {
+   UIEntity(Game game, Type type, int index, PolygonLite poly, Path path) {
       this.type = type;
       this.game = game;
       this.index = index;
@@ -67,27 +64,16 @@ public class UIEntity {
       this.path = path;
    }
    
-   public boolean isWithin(int x, int y) {
+   boolean isWithin(int x, int y) {
       if(poly == null) {
-         if(x >= x1 && x <= x2 && y >= y1 && y <= y2) {
-            return true;
-         }
-         return false;
+          return x >= x1 && x <= x2 && y >= y1 && y <= y2;
       }
       else {
          return poly.contains(new PointLite(x, y));
       }
    }
-   
-   public void move() {
-      
-   }
-   
-   public Path getViewPath() {
-      return path;
-   }
-   
-   public void touch(int action) {
+
+    public void touch(int action) {
        if(action != MotionEvent.ACTION_DOWN && action != MotionEvent.ACTION_UP) {
            return;
        }
@@ -98,9 +84,6 @@ public class UIEntity {
                 game.diceTouched(index);
             }
             break;
-//         case turnOver:
-//            game.newTurn(false);
-//            break;
          case road:
              if(action == MotionEvent.ACTION_UP) {
                  game.buildRoad(index);
@@ -122,7 +105,6 @@ public class UIEntity {
              }
             break;
          case resource:
-//            game.consumeKnightResource(index);
             break;
       }
    }
@@ -132,15 +114,6 @@ public class UIEntity {
       p.setStyle(Style.FILL);
       boolean draw = true;
       switch (type) {
-//      case dice:
-//         p.setARGB(255, 255, 0, 0);
-//         break;
-//      case roll:
-//         p.setARGB(255, 0, 255, 0);
-//         break;
-//      case turnOver:
-//         p.setARGB(255, 0, 0, 255);
-//         break;
       case road:
           if(game.canBuildRoad(index)) {
               highlight(p);
@@ -188,7 +161,6 @@ public class UIEntity {
       case resource:
           if(game.playsheet.canUseKnightResource(index)) {
               draw = false;
-//              p.setARGB(128, 255, 255, 255);
           }
           else if(game.playsheet.isKnightResourceUsed(index)) {
               p.setARGB(128, 220, 20, 20);
@@ -206,12 +178,11 @@ public class UIEntity {
       }
    }
    
-   public void highlight(Paint p) {
+   private void highlight(Paint p) {
        p.setARGB(100, 35, 180, 15);
-//       p.setARGB(128, 20, 200, 75);
    }
    
-   public void darken(Paint p) {
+   private void darken(Paint p) {
        p.setARGB(128, 100, 100, 0);
    }
 }
