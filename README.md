@@ -3,6 +3,10 @@ Resource Dice Game
 
 This is a dice game similar to the Catan Dice Game. Information on the game can be found [here](http://boardgamegeek.com/boardgame/27710/catan-dice-game).
 
+Translations: https://weblate.bubu1.eu/translate/catan-dice-game/app
+
+[![Translation status](https://weblate.bubu1.eu/widgets/catan-dice-game/fr/app/svg-badge.svg)](https://weblate.bubu1.eu/engage/catan-dice-game/fr/?utm_source=widget)
+
 <a href="https://f-droid.org/packages/com.ridgelineapps.resdicegame" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
 
