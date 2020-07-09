@@ -5,7 +5,7 @@ This is a dice game similar to the Catan Dice Game. Information on the game can 
 
 Translations: https://weblate.bubu1.eu/translate/catan-dice-game/app
 
-[![Translation status](https://weblate.bubu1.eu/widgets/catan-dice-game/app/svg-badge.svg)](https://weblate.bubu1.eu/engage/catan-dice-game/?utm_source=widget)
+[![Translation status](https://weblate.bubu1.eu/widgets/catan-dice-game/-/app/svg-badge.svg)](https://weblate.bubu1.eu/engage/catan-dice-game/?utm_source=widget)
 
 <a href="https://f-droid.org/packages/com.ridgelineapps.resdicegame" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
